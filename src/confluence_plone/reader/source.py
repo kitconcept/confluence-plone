@@ -76,17 +76,22 @@ class ExportSource:
     def _names(self) -> list[str]:
         """Return the names of all files, relative to the export root.
 
+        The names are sorted, so the result does not depend on the order
+        the filesystem or the archive lists them in.
+
         :returns: File names, with ``/`` as separator.
         """
         if self._zip is not None:
-            return [name for name in self._zip.namelist() if not name.endswith("/")]
+            return sorted(
+                name for name in self._zip.namelist() if not name.endswith("/")
+            )
         root = self._root
         assert root is not None  # noQA: S101
-        return [
+        return sorted(
             path.relative_to(root).as_posix()
             for path in root.rglob("*")
             if path.is_file()
-        ]
+        )
 
     def _index_attachments(self) -> dict[str, dict[str, list[tuple[str, str]]]]:
         """Index the files under ``attachments/`` by attachment id and version.

@@ -87,3 +87,13 @@ class TestFindAttachment:
     )
     def test_find(self, source, container_id, attachment_id, version, expected):
         assert source.find_attachment(container_id, attachment_id, version) == expected
+
+    def test_find_ignores_listing_order(self, tmp_path):
+        # A zip lists files in the order they were written
+        path = tmp_path / "export.zip"
+        with zipfile.ZipFile(path, "w") as archive:
+            archive.writestr("entities.xml", "<hibernate-generic/>")
+            archive.writestr("attachments/3/20/1", "three")
+            archive.writestr("attachments/2/20/1", "two")
+        with ExportSource(path) as source:
+            assert source.find_attachment("9", "20", 1) == "attachments/2/20/1"
