@@ -1,0 +1,9 @@
+[Aa]tlassian
+[Cc]allouts?
+[Dd]ocstrings?
+Gliffy
+Jira
+JSON
+[Ll]ossy
+[Nn]amespaces?
+[Ss]trikethrough

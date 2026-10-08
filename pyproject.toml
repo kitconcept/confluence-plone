@@ -1,0 +1,193 @@
+[project]
+name = "confluence-plone"
+description = "Convert a Confluence XML space export into the plone.exportimport format, ready to import into a kitconcept.intranet site."
+readme = "README.md"
+dynamic = ["version"]
+authors = [
+    { name = "kitconcept GmbH", email = "info@kitconcept.com" }
+]
+license = "GPL-2.0-only"
+keywords = ["Plone", "Python", "Confluence", "Migration", "kitconcept.intranet"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Framework :: Plone",
+  "Framework :: Plone :: 6.1",
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.14",
+  "Operating System :: OS Independent",
+  "Topic :: Text Processing :: Markup :: XML",
+]
+requires-python = ">=3.14"
+dependencies = [
+    "dynaconf>=3.2.11",
+    "lxml>=6.0.0",
+    "orjson>=3.11.3",
+    "rich>=14.1.0",
+    "tomlkit>=0.13.3",
+    "typer>=0.17.4",
+]
+
+[project.urls]
+Documentation = "https://github.com/kitconcept/confluence-plone/tree/main/docs"
+Issues = "https://github.com/kitconcept/confluence-plone/issues"
+Source = "https://github.com/kitconcept/confluence-plone"
+
+[project.scripts]
+confluence-plone = "confluence_plone.cli:cli"
+
+[dependency-groups]
+test = [
+    "coverage[toml]>=7.10.0",
+    "lxml-stubs>=0.5.1",
+    "mypy>=1.18.1",
+    "pytest-cov>=7.0.0",
+    "pytest>=8.4.2",
+    "ruff>=0.13.0",
+    "towncrier>=25.8.0",
+    "zest-releaser[recommended]>=9.6.0",
+    "zestreleaser-towncrier>=1.3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/confluence_plone/__init__.py"
+
+[tool.hatch.build]
+strict-naming = true
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/docs/_build", # Do not include built docs
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/confluence_plone"]
+
+[tool.uv]
+default-groups = ["test"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error"]
+
+[tool.coverage.run]
+source_pkgs = ["confluence_plone"]
+branch = true
+parallel = true
+omit = []
+
+[tool.coverage.paths]
+confluence_plone = ["src/confluence_plone"]
+tests = ["tests"]
+
+[tool.coverage.report]
+skip_empty = true
+show_missing = true
+fail_under = 100
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]
+
+[tool.towncrier]
+package = "confluence_plone"
+package_dir = "src"
+directory = "news/"
+filename = "CHANGELOG.md"
+start_string = "<!-- towncrier release notes start -->\n"
+title_format = "## {version} ({project_date})"
+template = "news/.changelog_template.jinja"
+issue_format = "[#{issue}](https://github.com/kitconcept/confluence-plone/issues/{issue})"
+underlines = ["", "", ""]
+
+[[tool.towncrier.type]]
+directory = "breaking"
+name = "Breaking changes:"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "feature"
+name = "Feature"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "bugfix"
+name = "Bugfix"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "internal"
+name = "Internal"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "documentation"
+name = "Documentation"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "tests"
+name = "Tests"
+showcontent = true
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+fix = true
+lint.select = [
+    # flake8-2020
+    "YTT",
+    # flake8-bandit
+    "S",
+    # flake8-bugbear
+    "B",
+    # flake8-builtins
+    "A",
+    # flake8-comprehensions
+    "C4",
+    # flake8-debugger
+    "T10",
+    # flake8-simplify
+    "SIM",
+    # mccabe
+    "C90",
+    # pycodestyle
+    "E", "W",
+    # pyflakes
+    "F",
+    # pygrep-hooks
+    "PGH",
+    # pyupgrade
+    "UP",
+    # ruff
+    "RUF",
+]
+lint.ignore = [
+    # DoNotAssignLambda
+    "E731",
+]
+
+[tool.ruff.lint.isort]
+case-sensitive = false
+no-sections = true
+force-single-line = true
+from-first = true
+lines-after-imports = 2
+lines-between-types = 1
+
+[tool.ruff.format]
+preview = true
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.zest-releaser]
+upload-pypi = false # Build and upload with uv
+python-file-with-version = "src/confluence_plone/__init__.py"

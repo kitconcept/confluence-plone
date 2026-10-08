@@ -1,0 +1,68 @@
+[config]
+# Write debug messages to the log file
+debug = false
+# Log file, relative to the current working directory
+log_file = "confluence-plone.log"
+# Directory where the reports are written, relative to the current working directory
+reports_location = "reports"
+# Time zone of the dates in the export (Confluence writes them without one)
+timezone = "UTC"
+
+[source]
+# Keys of the spaces to convert. An empty list converts every space.
+spaces = []
+# Convert personal spaces (``~username``) too
+include_personal_spaces = false
+# Convert archived spaces too
+include_archived_spaces = false
+
+[target]
+# Path of the Plone site, used for redirects
+site_root = "/Plone"
+# Existing container where one workspace per space is created ("" is the site root)
+base_path = ""
+workspace_type = "Workspace"
+page_type = "WikiPage"
+file_type = "File"
+image_type = "Image"
+# Workflow, its initial state, and the state every migrated workspace and page ends in
+workflow = "simple_intranet_workflow"
+initial_state = "private"
+review_state = "published"
+# Internal links and images: "resolveuid" (survives moves) or "path"
+link_style = "resolveuid"
+# Portal types that have no workflow
+types_without_workflow = ["File", "Image"]
+# Attachments with these media types become Image items, all others File items
+image_media_types = [
+    "image/gif",
+    "image/jpeg",
+    "image/png",
+    "image/svg+xml",
+    "image/webp",
+]
+
+[principals]
+# Principal used when a Confluence user cannot be mapped
+default = "admin"
+# How a Confluence user becomes a Plone principal: "username", "email" or "key"
+strategy = "username"
+# CSV file with the columns "confluence" and "principal". The first column
+# matches a Confluence user key, user name or email address.
+mapping_file = ""
+
+[content]
+# Label namespaces converted to subjects ("my" labels are personal)
+label_namespaces = ["global", "team"]
+# Convert footer comments to plone.app.discussion comments
+footer_comments = true
+# Convert inline comments to Wiki Page discussions
+inline_comments = true
+
+[macros]
+# Base URL of the Jira server, used to link issues from the jira macro
+jira_url = ""
+
+[redirects]
+# Write redirects.json for the old Confluence URLs (/display/KEY/Title)
+enabled = false

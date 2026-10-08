@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-generic datetime="2026-10-07 12:00:00">
+<object class="Space" package="com.atlassian.confluence.spaces">
+  <id name="id">10</id>
+  <property name="name"><![CDATA[Development]]></property>
+  <property name="key"><![CDATA[DEV]]></property>
+  <property name="creationDate">2024-01-10 09:00:00.000</property>
+  <property name="spaceType">global</property>
+  <property name="spaceStatus" enum-class="SpaceStatus" package="com.atlassian.confluence.spaces">CURRENT</property>
+  <property name="description" class="SpaceDescription" package="com.atlassian.confluence.spaces"><id name="id">50</id></property>
+  <property name="homePage" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+</object>
+<object class="Space" package="com.atlassian.confluence.spaces">
+  <id name="id">11</id>
+  <property name="name"><![CDATA[Old Archive]]></property>
+  <property name="key"><![CDATA[ARCH]]></property>
+  <property name="spaceType">global</property>
+  <property name="spaceStatus" enum-class="SpaceStatus" package="com.atlassian.confluence.spaces">ARCHIVED</property>
+</object>
+<object class="Space" package="com.atlassian.confluence.spaces">
+  <id name="id">12</id>
+  <property name="name"><![CDATA[John Doe]]></property>
+  <property name="key"><![CDATA[~jdoe]]></property>
+  <property name="spaceType">personal</property>
+</object>
+<object class="SpaceDescription" package="com.atlassian.confluence.spaces">
+  <id name="id">50</id>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">550</id>
+  <property name="body"><![CDATA[<p>Where the <strong>developers</strong> write things down.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="SpaceDescription" package="com.atlassian.confluence.spaces"><id name="id">50</id></property>
+</object>
+<object class="SpacePermission" package="com.atlassian.confluence.security">
+  <id name="id">60</id>
+  <property name="type"><![CDATA[VIEWSPACE]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="SpacePermission" package="com.atlassian.confluence.security">
+  <id name="id">61</id>
+  <property name="type"><![CDATA[EDITSPACE]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="ConfluenceUserImpl" package="com.atlassian.confluence.user">
+  <id name="key">u1</id>
+  <property name="name"><![CDATA[jdoe]]></property>
+  <property name="lowerName"><![CDATA[jdoe]]></property>
+  <property name="email"><![CDATA[john@example.org]]></property>
+</object>
+<object class="ConfluenceUserImpl" package="com.atlassian.confluence.user">
+  <id name="key">u2</id>
+  <property name="name"><![CDATA[asmith]]></property>
+  <property name="email"><![CDATA[anna@example.org]]></property>
+</object>
+<object class="InternalUser" package="com.atlassian.crowd.embedded.hibernate2">
+  <id name="id">70</id>
+  <property name="name"><![CDATA[jdoe]]></property>
+  <property name="displayName"><![CDATA[John Doe]]></property>
+  <property name="emailAddress"><![CDATA[john@example.org]]></property>
+</object>
+<object class="InternalUser" package="com.atlassian.crowd.embedded.hibernate2">
+  <id name="id">71</id>
+  <property name="name"><![CDATA[legacy]]></property>
+  <property name="displayName"><![CDATA[Legacy User]]></property>
+</object>
+<object class="InternalUser" package="com.atlassian.crowd.embedded.hibernate2">
+  <id name="id">72</id>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">100</id>
+  <property name="title"><![CDATA[Home]]></property>
+  <property name="version">3</property>
+  <property name="creationDate">2024-01-10 09:00:00.000</property>
+  <property name="lastModificationDate">2024-02-01 10:30:00.500</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="position">0</property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+  <property name="lastModifier" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u2</id></property>
+  <collection name="historicalVersions" class="java.util.List">
+    <element class="Page" package="com.atlassian.confluence.pages"><id name="id">104</id></element>
+  </collection>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">101</id>
+  <property name="title"><![CDATA[Setup Guide]]></property>
+  <property name="version">1</property>
+  <property name="creationDate">2024-01-11 09:00:00</property>
+  <property name="lastModificationDate">2024-01-11 09:00:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="position">1</property>
+  <property name="parent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+  <property name="creatorName"><![CDATA[asmith]]></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">102</id>
+  <property name="title"><![CDATA[Snippets]]></property>
+  <property name="version">1</property>
+  <property name="creationDate">2024-01-12 09:00:00</property>
+  <property name="lastModificationDate">not a date</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="position">0</property>
+  <property name="parentPage" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">103</id>
+  <property name="title"><![CDATA[Unfinished thoughts]]></property>
+  <property name="contentStatus"><![CDATA[draft]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">104</id>
+  <property name="title"><![CDATA[Home]]></property>
+  <property name="version">2</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="originalVersion" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">105</id>
+  <property name="title"><![CDATA[Lost & Found]]></property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="parent" class="Page" package="com.atlassian.confluence.pages"><id name="id">999</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="BlogPost" package="com.atlassian.confluence.pages">
+  <id name="id">106</id>
+  <property name="title"><![CDATA[Release news]]></property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">107</id>
+  <property name="title"><![CDATA[Removed page]]></property>
+  <property name="contentStatus"><![CDATA[deleted]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">108</id>
+  <property name="title"><![CDATA[Legacy Notes]]></property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="position">2</property>
+  <property name="parent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">109</id>
+  <property name="title"><![CDATA[Archived Home]]></property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">11</id></property>
+</object>
+<object class="Page" package="com.atlassian.confluence.pages">
+  <id name="id">110</id>
+  <property name="title"><![CDATA[Release Notes]]></property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="position">3</property>
+  <property name="parent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">500</id>
+  <property name="body"><![CDATA[<h1>Welcome</h1><p>Read the <ac:link><ri:page ri:content-title="Setup Guide" /><ac:plain-text-link-body><![CDATA[setup guide]]]]><![CDATA[></ac:plain-text-link-body></ac:link> first, ask <ac:link><ri:user ri:userkey="u1" /></ac:link>.</p><p><ac:image ac:align="right"><ri:attachment ri:filename="diagram.png" /></ac:image></p><p>The <ac:inline-comment-marker ac:ref="ref-1">important part</ac:inline-comment-marker> &mdash; see <ac:link><ri:attachment ri:filename="spec.pdf"><ri:page ri:content-title="Setup Guide" /></ri:attachment></ac:link>.</p><ac:structured-macro ac:name="info"><ac:parameter ac:name="title">Heads up</ac:parameter><ac:rich-text-body><p>Keep it short.</p></ac:rich-text-body></ac:structured-macro><ac:structured-macro ac:name="children" />]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">499</id>
+  <property name="body"><![CDATA[<p>An older body that is superseded.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">501</id>
+  <property name="body"><![CDATA[<ol><li>Install</li><li>Configure</li></ol><ac:structured-macro ac:name="include"><ac:parameter ac:name=""><ac:link><ri:page ri:content-title="Snippets" /></ac:link></ac:parameter></ac:structured-macro><p><ac:link><ri:page ri:content-title="Nowhere" /></ac:link></p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">101</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">502</id>
+  <property name="body"><![CDATA[<ac:structured-macro ac:name="excerpt"><ac:rich-text-body><p>Reusable snippet.</p></ac:rich-text-body></ac:structured-macro><p>Not part of the excerpt.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">102</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">508</id>
+  <property name="body"><![CDATA[h1. Old wiki markup
+* first
+* second]]></property>
+  <property name="bodyType">1</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">108</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">503</id>
+  <property name="body"><![CDATA[<p>Orphaned content.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">105</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">504</id>
+  <property name="body"/>
+</object>
+<object class="Attachment" package="com.atlassian.confluence.pages">
+  <id name="id">200</id>
+  <property name="title"><![CDATA[diagram.png]]></property>
+  <property name="version">2</property>
+  <property name="creationDate">2024-01-10 09:05:00</property>
+  <property name="lastModificationDate">2024-01-10 09:06:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+  <collection name="contentProperties" class="java.util.Collection">
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">400</id></element>
+  </collection>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">400</id>
+  <property name="name"><![CDATA[MEDIA_TYPE]]></property>
+  <property name="stringValue"><![CDATA[image/png]]></property>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">401</id>
+  <property name="name"><![CDATA[FILESIZE]]></property>
+  <property name="longValue">68</property>
+  <property name="content" class="Attachment" package="com.atlassian.confluence.pages"><id name="id">200</id></property>
+</object>
+<object class="Attachment" package="com.atlassian.confluence.pages">
+  <id name="id">201</id>
+  <property name="title"><![CDATA[spec.pdf]]></property>
+  <property name="version">1</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="contentType"><![CDATA[application/pdf]]></property>
+  <property name="fileSize">25</property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">101</id></property>
+  <property name="space" class="Space" package="com.atlassian.confluence.spaces"><id name="id">10</id></property>
+</object>
+<object class="Attachment" package="com.atlassian.confluence.pages">
+  <id name="id">202</id>
+  <property name="title"><![CDATA[missing.txt]]></property>
+  <property name="version">1</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="Attachment" package="com.atlassian.confluence.pages">
+  <id name="id">203</id>
+  <property name="title"><![CDATA[diagram.png]]></property>
+  <property name="version">1</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="originalVersion" class="Attachment" package="com.atlassian.confluence.pages"><id name="id">200</id></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="Attachment" package="com.atlassian.confluence.pages">
+  <id name="id">204</id>
+  <property name="title"><![CDATA[old.doc]]></property>
+  <property name="contentStatus"><![CDATA[deleted]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="Comment" package="com.atlassian.confluence.pages">
+  <id name="id">300</id>
+  <property name="version">1</property>
+  <property name="creationDate">2024-01-15 08:00:00</property>
+  <property name="lastModificationDate">2024-01-15 08:00:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+</object>
+<object class="Comment" package="com.atlassian.confluence.pages">
+  <id name="id">301</id>
+  <property name="version">1</property>
+  <property name="creationDate">2024-01-15 09:00:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="parent" class="Comment" package="com.atlassian.confluence.pages"><id name="id">300</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u2</id></property>
+</object>
+<object class="Comment" package="com.atlassian.confluence.pages">
+  <id name="id">302</id>
+  <property name="version">2</property>
+  <property name="creationDate">2024-01-16 08:00:00.250</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u2</id></property>
+  <collection name="contentProperties" class="java.util.Collection">
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">410</id></element>
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">411</id></element>
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">412</id></element>
+  </collection>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">410</id>
+  <property name="name"><![CDATA[inline-comment]]></property>
+  <property name="stringValue"><![CDATA[true]]></property>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">411</id>
+  <property name="name"><![CDATA[inline-marker-ref]]></property>
+  <property name="stringValue"><![CDATA[ref-1]]></property>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">412</id>
+  <property name="name"><![CDATA[inline-original-selection]]></property>
+  <property name="stringValue"><![CDATA[important part]]></property>
+</object>
+<object class="Comment" package="com.atlassian.confluence.pages">
+  <id name="id">303</id>
+  <property name="creationDate">2024-01-16 09:00:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="parent" class="Comment" package="com.atlassian.confluence.pages"><id name="id">302</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+</object>
+<object class="Comment" package="com.atlassian.confluence.pages">
+  <id name="id">304</id>
+  <property name="creationDate">2024-01-17 09:00:00</property>
+  <property name="contentStatus"><![CDATA[current]]></property>
+  <property name="containerContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+  <property name="creator" class="ConfluenceUserImpl" package="com.atlassian.confluence.user"><id name="key">u1</id></property>
+  <collection name="contentProperties" class="java.util.Collection">
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">413</id></element>
+    <element class="ContentProperty" package="com.atlassian.confluence.content"><id name="id">414</id></element>
+  </collection>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">413</id>
+  <property name="name"><![CDATA[inline-marker-ref]]></property>
+  <property name="stringValue"><![CDATA[ref-gone]]></property>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">414</id>
+  <property name="name"><![CDATA[inline-original-selection]]></property>
+  <property name="stringValue"><![CDATA[text that was removed]]></property>
+</object>
+<object class="ContentProperty" package="com.atlassian.confluence.content">
+  <id name="id">415</id>
+  <property name="name"><![CDATA[orphan-property]]></property>
+  <property name="stringValue"><![CDATA[x]]></property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">9999</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">600</id>
+  <property name="body"><![CDATA[<p>Great page!</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Comment" package="com.atlassian.confluence.pages"><id name="id">300</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">601</id>
+  <property name="body"><![CDATA[<p>Thanks, <strong>John</strong>.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Comment" package="com.atlassian.confluence.pages"><id name="id">301</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">602</id>
+  <property name="body"><![CDATA[<p>Is this still true?</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Comment" package="com.atlassian.confluence.pages"><id name="id">302</id></property>
+</object>
+<object class="BodyContent" package="com.atlassian.confluence.core">
+  <id name="id">603</id>
+  <property name="body"><![CDATA[<p>Yes.</p>]]></property>
+  <property name="bodyType">2</property>
+  <property name="content" class="Comment" package="com.atlassian.confluence.pages"><id name="id">303</id></property>
+</object>
+<object class="Label" package="com.atlassian.confluence.labels">
+  <id name="id">700</id>
+  <property name="name"><![CDATA[howto]]></property>
+  <property name="namespace"><![CDATA[global]]></property>
+</object>
+<object class="Label" package="com.atlassian.confluence.labels">
+  <id name="id">701</id>
+  <property name="name"><![CDATA[favourite]]></property>
+  <property name="namespace"><![CDATA[my]]></property>
+</object>
+<object class="Labelling" package="com.atlassian.confluence.labels">
+  <id name="id">710</id>
+  <property name="label" class="Label" package="com.atlassian.confluence.labels"><id name="id">700</id></property>
+  <property name="content" class="Page" package="com.atlassian.confluence.pages"><id name="id">100</id></property>
+</object>
+<object class="Labelling" package="com.atlassian.confluence.labels">
+  <id name="id">711</id>
+  <property name="label" class="Label" package="com.atlassian.confluence.labels"><id name="id">701</id></property>
+  <property name="labelableId">100</property>
+</object>
+<object class="Labelling" package="com.atlassian.confluence.labels">
+  <id name="id">712</id>
+  <property name="label" class="Label" package="com.atlassian.confluence.labels"><id name="id">799</id></property>
+  <property name="labelableId">100</property>
+</object>
+<object class="ContentPermissionSet" package="com.atlassian.confluence.security">
+  <id name="id">800</id>
+  <property name="type"><![CDATA[View]]></property>
+  <property name="owningContent" class="Page" package="com.atlassian.confluence.pages"><id name="id">101</id></property>
+</object>
+<object class="OutgoingLink" package="com.atlassian.confluence.links">
+  <id name="id">900</id>
+  <property name="destinationPageTitle"><![CDATA[Setup Guide]]></property>
+</object>
+</hibernate-generic>

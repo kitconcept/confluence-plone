@@ -1,0 +1,55 @@
+[project]
+name = "confluence_plone_docs"
+description = "Technical documentation for the confluence-plone package"
+keywords = [
+    "confluence-plone",
+    "documentation",
+    "Plone",
+    "Diátaxis",
+]
+version="1.0.0"
+readme = "README.md"
+requires-python = ">=3.14"
+license = { file = "LICENSE.md" }
+maintainers = [
+    { name = "kitconcept GmbH", email = "info@kitconcept.com" },
+]
+authors = [
+    { name = "kitconcept GmbH", email = "info@kitconcept.com" },
+]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+    "confluence-plone",
+]
+
+[dependency-groups]
+dev = [
+    "linkify-it-py",
+    "myst-parser",
+    "plone-sphinx-theme>=1.4.1",  # Use the latest stable version or a minimum
+    "sphinx-autobuild",
+    "sphinx-copybutton",
+    "sphinx-design",
+    "sphinx-notfound-page",
+    "sphinx-reredirects",
+    "sphinx-tippy",
+    "sphinxcontrib-mermaid",
+    "vale",
+]
+
+[project.urls]
+Repository = "https://github.com/kitconcept/confluence-plone"
+Documentation = "https://github.com/kitconcept/confluence-plone/tree/main/docs"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv.sources]
+confluence-plone = { path = "../", editable = true }

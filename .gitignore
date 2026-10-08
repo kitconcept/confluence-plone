@@ -1,0 +1,24 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.coverage
+.coverage.*
+
+# Reports
+reports/
+
+# Configuration
+confluence-plone.toml
+
+# Logs
+confluence-plone.log
+
+# Virtual environments
+.venv
